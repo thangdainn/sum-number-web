@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sum 2 number</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 80px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #74ebd5;
+            outline: none;
+            box-shadow: 0 0 5px rgba(116, 235, 213, 0.8);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #45a049;
+        }
+
+        .text-success {
+            color: #2ecc71;
+            text-align: center;
+        }
+
+        .list-group {
+            margin-top: 10px;
+        }
+
+        .list-group-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-left: 5px solid #4CAF50;
+            font-size: 14px;
+        }
+
+        h5 {
+            margin-top: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Sum Two Numbers</h2>
+
+    <form method="post" action="/sum" class="mt-4">
+        <div class="form-group">
+            <label for="stn1">First Number:</label>
+            <input type="text" id="stn1" name="stn1" required th:value="${stn1}">
+        </div>
+        <div class="form-group">
+            <label for="stn2">Second Number:</label>
+            <input type="text" id="stn2" name="stn2" required th:value="${stn2}">
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate</button>
+    </form>
+
+    <div th:if="${sum != null}" class="mt-4">
+        <h4 class="text-success">Result: <strong th:text="${sum}"></strong></h4>
+
+        <h5 class="mt-4">📋 Steps:</h5>
+        <div class="list-group">
+            <div th:each="step : ${steps}" class="list-group-item">
+                <span th:text="${step}"></span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
